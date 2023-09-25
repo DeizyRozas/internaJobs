@@ -1,0 +1,11 @@
+<%= form_for(@user, url: profile_path, method: :put, multipart: true) do |f| %>
+
+    <div class="field">
+      <%= f.label :profile_picture %>
+      <%= f.file_field :profile_picture %>
+    </div>
+    <div class="actions">
+      <%= f.submit "Guardar cambios" %>
+    </div>
+  <% end %>
+  

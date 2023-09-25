@@ -1,0 +1,11 @@
+<header class="masthead d-flex align-items-center">
+<div class="container px-4 px-lg-5 text-center">
+    <h1 class="mb-1 main-title">Portal de empleos</h1>
+    <h3 class="mb-5 main-title"><em>Postula a tu próximo trabajo dentro de la empresa.</em></h3>
+    <% if user_signed_in? %>
+        <a class="btn btn-primary btn-xl" href = /joboffers >Ver ofertas</a>
+    <% else %>
+    <a class="btn btn-primary btn-xl" href = /users/sign_in >Inicia sesión</a>
+    <% end %>
+</div>
+</header>

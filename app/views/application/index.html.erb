@@ -1,0 +1,21 @@
+<div class="container mt-5">
+    <h1 class="text-center">Postulaciones de Empleados</h1>
+    <table class="table table-bordered text-center">
+        <thead>
+        <tr>
+            <th>Oferta de Trabajo</th>
+            <th>Empleado</th>
+            <th>Fecha de Postulación</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @applications.each do |application| %>
+            <tr>
+            <td><%= application.joboffer.title %></td>
+            <td><%= application.user.email %></td>
+            <td><%= application.created_at.strftime("%d/%m/%Y") %></td>
+            </tr>
+        <% end %>
+        </tbody>
+    </table>
+</div>

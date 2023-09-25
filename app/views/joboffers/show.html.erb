@@ -1,0 +1,22 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <h2 class="card-title"><%= @joboffer.title %></h2>
+          <p class="card-text"><%= @joboffer.description %></p>
+          <p class="card-text">Fecha de publicación: <%= @joboffer.created_at.strftime("%d/%m/%Y") %></p>
+
+          <% if user_signed_in? %>
+            
+            <% if current_user.has_applied_to?(@joboffer) %>
+                  <span class="btn btn-success">Postulación realizada</span>
+                <% else %>
+                  <%= link_to "Postularse", apply_joboffer_path(@joboffer), method: :post, class: "btn btn-primary" %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<a class="menu-toggle rounded"><i class="fas fa-bars"></i></a>
+        <nav id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand"><a href="/">Portal de empleos</a></li>
+                
+                    <% if user_signed_in? %>
+                        <li class="sidebar-nav-item"><a><%=current_user.email %></a></li>
+                        <% current_user.roles.each do |role| %>
+                            <li class="sidebar-nav-item"><a>Rol: <%= role.name %></a></li>
+                        <% end %>
+                        <% if can? :create, User %>
+                            <li class="sidebar-nav-item"><%= link_to "Registro de empleados", new_user_registration_path %></li>
+                        <% end %>
+                        <% if can? :read, Application %>
+                            <li class="sidebar-nav-item"><%= link_to "Postulaciones", application_index_path %></li>
+                        <% end %>
+                        <% if can? :create, Joboffer %>
+                            <li class="sidebar-nav-item"><%= link_to "Crear oferta de empleo", new_joboffer_path %></li>
+                        <% end %>
+                        <%if can? :create, Application %>
+                            <li class="sidebar-nav-item"><%= link_to "Ver ofertas", joboffers_path%></li>
+                        <% end %>
+                        <% if can? :update, current_user %>
+                        <li class="sidebar-nav-item"><%= link_to "Mi perfil", employee_profile_path(current_user)%></li>
+                        <% end %>
+
+                        <li class="sidebar-nav-item"><%= link_to "Cerrar sesión", destroy_user_session_path  %></li>
+                    <% else %>
+                        <li class="sidebar-nav-item"><%= link_to "Iniciar sesión", user_session_path %></li>
+                    <% end %>
+            </ul>
+        </nav>

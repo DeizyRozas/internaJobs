@@ -1,0 +1,40 @@
+<!-- app/views/job_offers/index.html.erb -->
+
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <h2 class="text-center mb-4">Ofertas de trabajo disponibles</h2>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Título</th>
+            <th>Descripción</th>
+            <th>Fecha de publicación</th>
+            <th>Mostrar oferta</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <% @joboffers.each do |job_offer| %>
+            <tr>
+              <td><%= job_offer.title %></td>
+              <td><%= job_offer.description %></td>
+              <td><%= job_offer.created_at.strftime("%d/%m/%Y") %></td>
+              <% if user_signed_in? %>
+                <% if current_user.has_applied_to?(job_offer) %>
+                <td><span class="btn btn-success">Postulación realizada</span></td>
+                <% else %>
+                  <td><%= link_to "Ver oferta de empleo", joboffer_path(job_offer), class: "btn btn-primary" %></td>
+                <% end %>
+              <% end %>
+
+              
+
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

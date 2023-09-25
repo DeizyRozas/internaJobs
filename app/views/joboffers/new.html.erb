@@ -1,0 +1,18 @@
+<div class="container mt-5">
+    <h1 class="text-center">Crear Nueva Oferta de Empleo</h1>
+    <%= form_for @joboffer do |f| %>
+        <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+        <%= f.label :description %>
+        <%= f.text_area :description, class: "form-control", rows: 4 %>
+        </div>
+
+        <div class="form-group">
+        <%= f.submit "Crear Oferta", class: "btn btn-primary" %>
+        </div>
+    <% end %>
+</div>
